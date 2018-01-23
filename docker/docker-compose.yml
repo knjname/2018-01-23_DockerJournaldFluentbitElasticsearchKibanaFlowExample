@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+
+  my_nginx:
+    image: nginx
+    logging:
+      driver: journald
+    ports:
+      - 18080:80
+
+  fluentd:
+    image: fluent/fluent-bit
+    volumes:
+      - /run/log/journal:/run/log/journal:ro
+    command: /fluent-bit/bin/fluent-bit -i systemd -o es -p Host=elasticsearch -p Port=9200
+
+  elasticsearch:
+    image: elasticsearch
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    volumes:
+      - ../esdata:/usr/share/elasticsearch/data
+  
+  kibana:
+    image: kibana
+    ports:
+      - 5601:5601
+
