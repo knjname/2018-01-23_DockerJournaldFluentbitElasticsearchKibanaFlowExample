@@ -18,3 +18,7 @@
 
 - [http://fluentbit.io/documentation/current/output/elasticsearch.html](fluent-bit/elasticsearch)
 - [http://fluentbit.io/documentation/current/input/systemd.html](fluent-bit/systemd & journald)
+
+## License
+
+MIT
