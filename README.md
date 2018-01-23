@@ -1,5 +1,5 @@
 
-# Docker => Journald => fluent-bit => Elasticsearch flow example
+# Docker => Journald => fluent-bit => Elasticsearch => Kibana flow example
 
 1. Run Vagrant and services.
     ```console
